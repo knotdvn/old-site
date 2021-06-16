@@ -1,0 +1,39 @@
+
+jQuery(document).ready(function($){
+	var nav = {};
+	var navContent= {};
+
+	var paneW = '';
+	var target = '';
+<<<<<<< HEAD
+	$('.nav').on('click', 'li', function(){
+		$('.nav li').removeClass('tagged');
+		$(this).addClass('tagged');
+		 target = $(this).attr('ohdnav') + '.php';
+=======
+	$('#nav').on('click', 'li', function(){
+		$('#nav li').removeClass('tagged');
+		$(this).addClass('tagged');
+		 target = $(this).attr('id') + '.php';
+>>>>>>> d7b93256fd92a1d6079a8db3893c693eccc6cbf8
+		 
+	
+		 //if already loaded
+		 if(nav[target]){
+		 	$('#pane_content').html(navContent[target]);
+		 }else{
+		 	$.post( ( target ), {dvn:'yes'}, 
+			function(data, status){
+				nav[this.url] = true;
+				navContent[this.url] = data;
+				$('#pane_content').html(navContent[this.url]);
+			});//end post
+		 }//end else load
+       
+	});//end on click work
+
+
+
+
+
+});//end doc ready
